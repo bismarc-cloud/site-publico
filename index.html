@@ -8,11 +8,11 @@
   <style>
     body { overflow-x: hidden; word-break: break-word; overflow-wrap: anywhere; }
     @keyframes pulseGlow {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0,0,0,0.22); }
-      50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0,0,0,0); }
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.22); }
+      50% { transform: scale(1.025); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
     }
     .cta-pulse { animation: pulseGlow 2.4s infinite; }
-    header.compact { padding-top: 0.55rem; padding-bottom: 0.55rem; box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
+    header.compact { padding-top: 0.55rem; padding-bottom: 0.55rem; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); }
   </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col">
@@ -24,7 +24,7 @@
 
   <header id="site-header" class="fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur border-b border-black/5 transition-all duration-300 py-3.5 px-4 sm:px-8 hidden">
     <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
-      <a href="#top" id="brand-link" class="flex items-center gap-3 min-w-0">
+      <a href="#top" class="flex items-center gap-3 min-w-0">
         <img id="header-logo" class="h-10 w-auto object-contain hidden" alt="Logo" />
         <span id="header-title" class="font-bold text-lg sm:text-xl truncate"></span>
       </a>
@@ -40,11 +40,12 @@
 
   <main id="top" class="flex-1 pt-20"></main>
 
-  <footer id="site-footer" class="py-10 px-4 sm:px-8 mt-auto hidden">
+  <footer id="site-footer" class="py-12 px-4 sm:px-8 mt-auto hidden">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
       <div class="flex flex-col items-center sm:items-start gap-2">
-        <img id="footer-logo" class="h-10 w-auto object-contain hidden" alt="Logo Rodapé" />
+        <img id="footer-logo" class="h-11 w-auto object-contain hidden" alt="Logo Rodapé" />
         <strong id="footer-title" class="text-lg"></strong>
+        <p id="footer-text" class="text-sm opacity-90"></p>
         <p id="footer-address" class="text-sm opacity-80"></p>
       </div>
       <div class="flex flex-col items-center sm:items-end gap-2 text-sm">
@@ -54,25 +55,72 @@
     </div>
   </footer>
 
-  <a id="floating-wa" target="_blank" rel="noopener" class="hidden fixed bottom-5 right-5 z-40 flex items-center gap-2 px-4 py-3 rounded-full text-white font-semibold shadow-xl cta-pulse" style="background:#16A34A;">
+  <a id="floating-wa" target="_blank" rel="noopener" class="hidden fixed bottom-5 right-5 z-40 flex items-center gap-2 px-5 py-3 rounded-full text-white font-semibold shadow-xl" style="background:#16A34A;">
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.46 0 .1 5.36.1 11.96c0 2.1.55 4.16 1.6 5.97L0 24l6.24-1.64a11.9 11.9 0 0 0 5.82 1.49h.01c6.6 0 11.96-5.36 11.96-11.96 0-3.2-1.25-6.2-3.51-8.41ZM12.07 21.8h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.7.97.99-3.61-.24-.37a9.86 9.86 0 0 1-1.52-5.24c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.83-9.92 9.83Zm5.43-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+    </svg>
     <span>WhatsApp</span>
   </a>
 
   <script>
-    function gerarIlustracaoSVG(paleta, seedText = '') {
-      const p = paleta.primaria || '#1E293B';
-      const s = paleta.secundaria || '#E2E8F0';
-      const d = paleta.destaque || '#2563EB';
-      return `
-        <svg viewBox="0 0 800 420" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
-          <rect width="800" height="420" fill="${s}"/>
-          <circle cx="660" cy="95" r="140" fill="${p}" opacity="0.14"/>
-          <circle cx="150" cy="350" r="170" fill="${d}" opacity="0.18"/>
-          <rect x="240" y="95" width="320" height="230" rx="28" fill="#ffffff" opacity="0.88"/>
-          <circle cx="400" cy="185" r="46" fill="${p}" opacity="0.9"/>
-          <rect x="305" y="252" width="190" height="16" rx="8" fill="${d}" opacity="0.85"/>
-          <rect x="340" y="280" width="120" height="12" rx="6" fill="${p}" opacity="0.35"/>
-        </svg>`;
+    function esc(str) {
+      return String(str || '')
+        .replace(/&/g, '&')
+        .replace(/</g, '<')
+        .replace(/>/g, '>')
+        .replace(/"/g, '"');
+    }
+
+    function gerarIlustracaoSVG(paleta, tema = '') {
+      const p = paleta.primaria || '#76513F';
+      const s = paleta.secundaria || '#E8D9C7';
+      const d = paleta.destaqueCta || paleta.destaque || '#C5A46D';
+
+      const motivos = {
+        hero_psicanalise: `
+          <circle cx="650" cy="95" r="130" fill="${p}" opacity="0.14"/>
+          <circle cx="150" cy="340" r="150" fill="${d}" opacity="0.22"/>
+          <rect x="200" y="75" width="400" height="270" rx="32" fill="#ffffff" opacity="0.88"/>
+          <path d="M325 235 C325 165, 475 165, 475 235" fill="none" stroke="${p}" stroke-width="14" stroke-linecap="round"/>
+          <circle cx="400" cy="145" r="34" fill="${d}" opacity="0.9"/>
+          <rect x="300" y="268" width="200" height="14" rx="7" fill="${p}" opacity="0.28"/>`,
+        ansiedade: `
+          <circle cx="640" cy="90" r="110" fill="${d}" opacity="0.2"/>
+          <path d="M140 240 Q240 120 340 220 T540 200 T680 230" fill="none" stroke="${p}" stroke-width="14" stroke-linecap="round" opacity="0.75"/>
+          <circle cx="400" cy="210" r="58" fill="#ffffff" opacity="0.9"/>
+          <circle cx="400" cy="210" r="26" fill="${d}" opacity="0.9"/>`,
+        relacionamentos: `
+          <circle cx="330" cy="210" r="88" fill="${p}" opacity="0.22"/>
+          <circle cx="470" cy="210" r="88" fill="${d}" opacity="0.32"/>
+          <circle cx="330" cy="210" r="42" fill="#ffffff" opacity="0.9"/>
+          <circle cx="470" cy="210" r="42" fill="#ffffff" opacity="0.9"/>`,
+        esgotamento: `
+          <rect x="190" y="100" width="420" height="220" rx="28" fill="#ffffff" opacity="0.86"/>
+          <rect x="260" y="175" width="280" height="24" rx="12" fill="${p}" opacity="0.2"/>
+          <rect x="260" y="175" width="120" height="24" rx="12" fill="${d}" opacity="0.9"/>
+          <rect x="260" y="225" width="190" height="14" rx="7" fill="${p}" opacity="0.3"/>`,
+        sobre_psicanalise: `
+          <circle cx="220" cy="210" r="115" fill="${d}" opacity="0.22"/>
+          <rect x="270" y="85" width="330" height="250" rx="30" fill="#ffffff" opacity="0.9"/>
+          <circle cx="435" cy="175" r="46" fill="${p}" opacity="0.88"/>
+          <path d="M355 280 C365 235, 505 235, 515 280" fill="${d}" opacity="0.85"/>`,
+        faixa_transformacao: `
+          <circle cx="140" cy="110" r="120" fill="#ffffff" opacity="0.12"/>
+          <circle cx="670" cy="310" r="145" fill="${d}" opacity="0.28"/>
+          <path d="M220 260 Q400 110 580 240" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" opacity="0.75"/>`
+      };
+
+      const corpo = motivos[tema] || `
+        <circle cx="660" cy="95" r="140" fill="${p}" opacity="0.14"/>
+        <circle cx="150" cy="350" r="170" fill="${d}" opacity="0.18"/>
+        <rect x="240" y="95" width="320" height="230" rx="28" fill="#ffffff" opacity="0.88"/>
+        <circle cx="400" cy="185" r="46" fill="${p}" opacity="0.9"/>
+        <rect x="305" y="252" width="190" height="16" rx="8" fill="${d}" opacity="0.85"/>
+        <rect x="340" y="280" width="120" height="12" rx="6" fill="${p}" opacity="0.35"/>`;
+
+      return `<svg viewBox="0 0 800 420" class="w-full h-full object-cover" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="420" fill="${s}"/>${corpo}
+      </svg>`;
     }
 
     function buildWaLink(num, msg) {
@@ -82,16 +130,26 @@
       return `https://wa.me/${full}?text=${encodeURIComponent(msg || 'Olá! Vim pelo site e gostaria de mais informações.')}`;
     }
 
+    function resolveWhatsApp(waObj, contatoPadrao, fallbackText) {
+      if (!waObj || !waObj.ativo) return null;
+      const numero = (waObj.usarPadrao === false && waObj.numeroCustom)
+        ? waObj.numeroCustom
+        : (contatoPadrao?.whatsapp || '');
+      const mensagem = waObj.mensagem || contatoPadrao?.mensagemPadrao || fallbackText;
+      const textoBotao = waObj.textoBotao || 'Falar no WhatsApp';
+      if (!numero) return null;
+      return { href: buildWaLink(numero, mensagem), label: textoBotao };
+    }
+
     function renderMedia(obj, paleta, heightClass) {
       if (obj.usarImagem === false) return '';
-      const hasUpload = obj.fonteImagem === 'upload' && (obj.imagemUpload || obj.imagem);
-      const customImg = obj.imagemUpload || obj.imagem;
-      if (hasUpload || (obj.fonteImagem !== 'padrao' && customImg)) {
-        return `<div class="w-full ${heightClass} rounded-2xl overflow-hidden mb-5 bg-black/5">
-          <img src="${customImg}" alt="${obj.titulo || ''}" class="w-full h-full object-cover" />
+      const customImg = obj.foto || obj.imagemUpload || obj.imagem;
+      if (obj.fonteImagem === 'upload' && customImg) {
+        return `<div class="w-full ${heightClass} rounded-2xl overflow-hidden bg-black/5">
+          <img src="${esc(customImg)}" alt="${esc(obj.titulo)}" class="w-full h-full object-cover" />
         </div>`;
       }
-      return `<div class="w-full ${heightClass} rounded-2xl overflow-hidden mb-5">${gerarIlustracaoSVG(paleta, obj.titulo)}</div>`;
+      return `<div class="w-full ${heightClass} rounded-2xl overflow-hidden">${gerarIlustracaoSVG(paleta, obj.imagemPadraoTema)}</div>`;
     }
 
     async function initSite() {
@@ -110,27 +168,46 @@
         }
 
         const cfg = data.config;
-        const pal = cfg.paleta || { primaria: '#1E293B', secundaria: '#E2E8F0', fundo: '#F8FAFC', destaque: '#2563EB', texto: '#0F172A' };
+        const idt = cfg.identidade || {};
+        const contato = cfg.contatoPadrao || {
+          whatsapp: cfg.whatsapp || '',
+          instagram: cfg.instagram || '',
+          mensagemPadrao: '',
+          botaoFlutuante: true
+        };
+        const pal = cfg.paleta || {};
+        const corPrimaria = pal.primaria || '#1E293B';
+        const corSecundaria = pal.secundaria || '#E2E8F0';
+        const corFundo = pal.fundo || '#F8FAFC';
+        const corCta = pal.destaqueCta || pal.destaque || '#2563EB';
+        const corTexto = pal.texto || '#0F172A';
+        const tituloSite = idt.titulo || cfg.titulo || 'Site Oficial';
+        const logoClara = idt.logoClara || cfg.logoClara || '';
+        const logoEscura = idt.logoEscura || cfg.logoEscura || '';
+        const pulseClass = idt.botoesPulsantes === false ? '' : 'cta-pulse';
 
-        document.title = cfg.titulo || 'Site Oficial';
-        document.body.style.backgroundColor = pal.fundo;
-        document.body.style.color = pal.texto;
+        document.title = tituloSite;
+        document.body.style.backgroundColor = corFundo;
+        document.body.style.color = corTexto;
 
         // Cabeçalho
         const header = document.getElementById('site-header');
         header.classList.remove('hidden');
-        document.getElementById('header-title').textContent = cfg.titulo || '';
-        document.getElementById('header-title').style.color = pal.primaria;
-        if (cfg.logoClara) {
+        document.getElementById('header-title').textContent = tituloSite;
+        document.getElementById('header-title').style.color = corPrimaria;
+        if (logoClara) {
           const img = document.getElementById('header-logo');
-          img.src = cfg.logoClara;
+          img.src = logoClara;
           img.classList.remove('hidden');
         }
 
-        const secoes = Array.isArray(cfg.secoes) ? cfg.secoes : [];
+        const secoes = Array.isArray(cfg.subdivisoes)
+          ? cfg.subdivisoes
+          : (Array.isArray(cfg.secoes) ? cfg.secoes : []);
+
         const navLinks = secoes
-          .filter(s => s.menu)
-          .map(s => `<a href="#sec-${s.id}" class="hover:opacity-75 transition" style="color:${pal.primaria}">${s.menu}</a>`)
+          .filter(s => s.menuLabel || s.menu)
+          .map(s => `<a href="#sec-${esc(s.id)}" class="hover:opacity-70 transition" style="color:${corPrimaria}">${esc(s.menuLabel || s.menu)}</a>`)
           .join('');
         document.getElementById('desktop-nav').innerHTML = navLinks;
         document.getElementById('mobile-nav').innerHTML = navLinks;
@@ -147,69 +224,103 @@
           };
         });
 
-        window.addEventListener('scroll', () => {
-          header.classList.toggle('compact', window.scrollY > 30);
-        });
+        if (idt.cabecalhoFixoCompacto !== false) {
+          window.addEventListener('scroll', () => {
+            header.classList.toggle('compact', window.scrollY > 30);
+          });
+        }
 
-        // Seções
+        // Renderização das subdivisões
         const main = document.getElementById('top');
         main.innerHTML = secoes.map(sec => {
+          const waSec = resolveWhatsApp(sec.whatsapp, contato, `Olá! Gostaria de falar sobre: ${sec.titulo || tituloSite}`);
+          const btnSecHtml = waSec ? `
+            <div class="mt-7">
+              <a href="${waSec.href}" target="_blank" rel="noopener"
+                class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-white shadow-lg transition hover:opacity-95 ${pulseClass}"
+                style="background:${corCta}">
+                ${esc(waSec.label)}
+              </a>
+            </div>` : '';
+
+          // HERO
           if (sec.tipo === 'hero') {
+            const media = renderMedia(sec, pal, 'h-60 sm:h-80');
             return `
-              <section id="sec-${sec.id}" class="py-8 sm:py-14 px-4 sm:px-8">
-                <div class="max-w-5xl mx-auto rounded-3xl p-6 sm:p-10 shadow-sm text-center" style="background:${pal.secundaria}">
-                  ${renderMedia(sec, pal, 'h-52 sm:h-80')}
-                  <h1 class="text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-4" style="color:${pal.primaria}">${sec.titulo || ''}</h1>
-                  <p class="text-base sm:text-lg max-w-2xl mx-auto opacity-90 mb-7">${sec.descricao || ''}</p>
-                  ${sec.textoBotao ? `
-                    <a href="${buildWaLink(cfg.whatsapp, 'Olá! Gostaria de falar sobre: ' + (sec.titulo || cfg.titulo))}" target="_blank" rel="noopener"
-                      class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-bold text-white shadow-lg cta-pulse"
-                      style="background:${pal.destaque}">
-                      ${sec.textoBotao}
-                    </a>` : ''}
+              <section id="sec-${esc(sec.id)}" class="py-10 sm:py-16 px-4 sm:px-8">
+                <div class="max-w-6xl mx-auto rounded-3xl p-6 sm:p-12 shadow-sm grid ${media ? 'grid-cols-1 lg:grid-cols-2 items-center gap-8 sm:gap-12' : 'grid-cols-1 text-center'}" style="background:${corSecundaria}">
+                  <div class="${media ? 'text-left' : 'max-w-3xl mx-auto text-center'}">
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4" style="color:${corPrimaria}">${esc(sec.titulo)}</h1>
+                    <p class="text-base sm:text-lg opacity-90 leading-relaxed">${esc(sec.subtitulo || sec.descricao)}</p>
+                    ${btnSecHtml}
+                  </div>
+                  ${media ? `<div>${media}</div>` : ''}
                 </div>
               </section>`;
           }
 
-          if (sec.tipo === 'cards' || Array.isArray(sec.itens)) {
+          // GRADE / CARDS
+          if (sec.tipo === 'grade' || sec.tipo === 'cards' || (Array.isArray(sec.itens) && sec.itens.length > 0)) {
             const itens = sec.itens || [];
             const cols = itens.length === 1 ? 'max-w-xl mx-auto grid-cols-1'
-              : itens.length === 2 || itens.length === 4 ? 'grid-cols-1 md:grid-cols-2'
+              : (itens.length === 2 || itens.length === 4 || sec.colunas === 2) ? 'grid-cols-1 md:grid-cols-2'
               : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
 
             return `
-              <section id="sec-${sec.id}" class="py-12 px-4 sm:px-8">
+              <section id="sec-${esc(sec.id)}" class="py-12 sm:py-16 px-4 sm:px-8">
                 <div class="max-w-6xl mx-auto">
                   <div class="text-center max-w-2xl mx-auto mb-10">
-                    <h2 class="text-2xl sm:text-3xl font-bold mb-2" style="color:${pal.primaria}">${sec.titulo || ''}</h2>
-                    ${sec.subtitulo ? `<p class="opacity-80">${sec.subtitulo}</p>` : ''}
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-2" style="color:${corPrimaria}">${esc(sec.titulo)}</h2>
+                    ${(sec.subtitulo || sec.descricao) ? `<p class="opacity-85">${esc(sec.subtitulo || sec.descricao)}</p>` : ''}
                   </div>
                   <div class="grid ${cols} gap-6">
-                    ${itens.map(item => `
-                      <div class="rounded-2xl p-6 bg-white shadow-sm border border-black/5 flex flex-col justify-between">
-                        <div>
-                          ${renderMedia(item, pal, 'h-44')}
-                          <h3 class="text-xl font-bold mb-2" style="color:${pal.primaria}">${item.titulo || ''}</h3>
-                          <p class="text-sm opacity-85 leading-relaxed mb-5">${item.descricao || ''}</p>
-                        </div>
-                        ${item.textoBotao ? `
-                          <a href="${buildWaLink(cfg.whatsapp, 'Olá! Tenho interesse em: ' + (item.titulo || ''))}" target="_blank" rel="noopener"
-                            class="w-full text-center py-2.5 px-4 rounded-xl font-semibold text-white transition hover:opacity-90"
-                            style="background:${pal.destaque}">
-                            ${item.textoBotao}
-                          </a>` : ''}
-                      </div>`).join('')}
+                    ${itens.map(item => {
+                      const waItem = resolveWhatsApp(item.whatsapp, contato, `Olá! Tenho interesse em: ${item.titulo || ''}`);
+                      const mediaItem = renderMedia(item, pal, 'h-44');
+                      return `
+                        <div class="rounded-2xl p-6 bg-white shadow-sm border border-black/5 flex flex-col justify-between gap-4">
+                          <div>
+                            ${mediaItem ? `<div class="mb-4">${mediaItem}</div>` : ''}
+                            <h3 class="text-xl font-bold mb-2" style="color:${corPrimaria}">${esc(item.titulo)}</h3>
+                            <p class="text-sm opacity-85 leading-relaxed">${esc(item.descricao)}</p>
+                          </div>
+                          ${waItem ? `
+                            <a href="${waItem.href}" target="_blank" rel="noopener"
+                              class="w-full text-center py-2.5 px-4 rounded-xl font-semibold text-white transition hover:opacity-90"
+                              style="background:${corCta}">
+                              ${esc(waItem.label)}
+                            </a>` : ''}
+                        </div>`;
+                    }).join('')}
                   </div>
+                  ${btnSecHtml ? `<div class="text-center mt-8">${btnSecHtml}</div>` : ''}
                 </div>
               </section>`;
           }
 
+          // FAIXA DE DESTAQUE
+          if (sec.tipo === 'faixa') {
+            return `
+              <section id="sec-${esc(sec.id)}" class="py-10 px-4 sm:px-8">
+                <div class="max-w-5xl mx-auto rounded-3xl p-8 sm:p-12 text-center text-white shadow-md" style="background:${corPrimaria}">
+                  <h2 class="text-2xl sm:text-3xl font-bold leading-snug mb-3">${esc(sec.titulo)}</h2>
+                  ${(sec.subtitulo || sec.descricao) ? `<p class="text-base sm:text-lg opacity-90 max-w-2xl mx-auto">${esc(sec.subtitulo || sec.descricao)}</p>` : ''}
+                  ${btnSecHtml}
+                </div>
+              </section>`;
+          }
+
+          // SOBRE / TEXTO PADRÃO
+          const mediaSobre = renderMedia(sec, pal, 'h-60 sm:h-72');
           return `
-            <section id="sec-${sec.id}" class="py-12 px-4 sm:px-8">
-              <div class="max-w-5xl mx-auto rounded-3xl p-6 sm:p-10 bg-white shadow-sm border border-black/5">
-                ${renderMedia(sec, pal, 'h-56 sm:h-72')}
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4" style="color:${pal.primaria}">${sec.titulo || ''}</h2>
-                <p class="text-base leading-relaxed opacity-90 whitespace-pre-line">${sec.descricao || ''}</p>
+            <section id="sec-${esc(sec.id)}" class="py-12 sm:py-16 px-4 sm:px-8">
+              <div class="max-w-6xl mx-auto rounded-3xl p-6 sm:p-10 bg-white shadow-sm border border-black/5 grid ${mediaSobre ? 'grid-cols-1 lg:grid-cols-2 items-center gap-8' : 'grid-cols-1'}">
+                ${mediaSobre ? `<div>${mediaSobre}</div>` : ''}
+                <div>
+                  <h2 class="text-2xl sm:text-3xl font-bold mb-4" style="color:${corPrimaria}">${esc(sec.titulo)}</h2>
+                  <p class="text-base leading-relaxed opacity-90 whitespace-pre-line">${esc(sec.subtitulo || sec.descricao)}</p>
+                  ${btnSecHtml}
+                </div>
               </div>
             </section>`;
         }).join('');
@@ -217,26 +328,32 @@
         // Rodapé
         const footer = document.getElementById('site-footer');
         footer.classList.remove('hidden');
-        footer.style.backgroundColor = pal.primaria;
+        footer.style.backgroundColor = corPrimaria;
         footer.style.color = '#ffffff';
-        document.getElementById('footer-title').textContent = cfg.titulo || '';
+        document.getElementById('footer-title').textContent = tituloSite;
+        document.getElementById('footer-text').textContent = cfg.rodape?.texto || '';
         document.getElementById('footer-address').textContent = cfg.rodape?.endereco || '';
-        document.getElementById('footer-copy').textContent = cfg.rodape?.copyright || `© ${new Date().getFullYear()} ${cfg.titulo || ''}`;
-        if (cfg.logoEscura) {
+        document.getElementById('footer-copy').textContent = cfg.rodape?.copyright || `© ${new Date().getFullYear()} ${tituloSite}`;
+        if (logoEscura) {
           const fl = document.getElementById('footer-logo');
-          fl.src = cfg.logoEscura;
+          fl.src = logoEscura;
           fl.classList.remove('hidden');
         }
+
         const socials = [];
-        if (cfg.instagram) {
-          const ig = cfg.instagram.replace(/^@/, '');
-          socials.push(`<a href="https://instagram.com/${ig}" target="_blank" rel="noopener" class="underline">Instagram</a>`);
+        if (contato.instagram) {
+          const ig = contato.instagram.replace(/^@/, '');
+          socials.push(`<a href="https://instagram.com/${encodeURIComponent(ig)}" target="_blank" rel="noopener" class="underline hover:opacity-80">Instagram (@${esc(ig)})</a>`);
         }
-        if (cfg.whatsapp) {
-          socials.push(`<a href="${buildWaLink(cfg.whatsapp)}" target="_blank" rel="noopener" class="underline">WhatsApp</a>`);
-          const fwa = document.getElementById('floating-wa');
-          fwa.href = buildWaLink(cfg.whatsapp);
-          fwa.classList.remove('hidden');
+        if (contato.whatsapp) {
+          const waHref = buildWaLink(contato.whatsapp, contato.mensagemPadrao);
+          socials.push(`<a href="${waHref}" target="_blank" rel="noopener" class="underline hover:opacity-80">WhatsApp</a>`);
+          if (contato.botaoFlutuante !== false) {
+            const fwa = document.getElementById('floating-wa');
+            fwa.href = waHref;
+            if (pulseClass) fwa.classList.add(pulseClass);
+            fwa.classList.remove('hidden');
+          }
         }
         document.getElementById('footer-socials').innerHTML = socials.join('');
 
@@ -245,7 +362,7 @@
         document.getElementById('loading').innerHTML = `
           <div class="text-center px-6 max-w-md">
             <h1 class="text-xl font-bold text-slate-800 mb-2">Site em preparação</h1>
-            <p class="text-sm text-slate-500">${err.message}</p>
+            <p class="text-sm text-slate-500">${esc(err.message)}</p>
           </div>`;
       }
     }
